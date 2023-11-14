@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skeleton Themes example</title>
+
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
+    <link rel="stylesheet" href="../css/themes/skeleton-blue.css">
+    <link rel="stylesheet" href="../css/themes/soothing-orange.css">
+    <link rel="stylesheet" href="../css/themes/crimson-red.css">
+    <link rel="stylesheet" href="../css/themes/hacker-purple.css">
+
+    <!-- Raleway font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *:not(.button, a) {
+            --color-transition: 200ms ease-in-out;
+
+            transition: color var(--color-transition),
+                background-color var(--color-transition),
+                border-color var(--color-transition);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-top: 5vh;
+        }
+
+        h4 {
+            margin-top: 3vh;
+        }
+
+        .code-block {
+            white-space: pre;
+            word-wrap: break-word;
+        }
+
+        pre {
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Skeleton Themes Example</h2>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="eight columns">
+                <p>
+                    This example goes through the differing things with the
+                    Skeleton Themes implementation. Everything else is the same,
+                    and is further described at
+                    <a href="http://getskeleton.com/">getskeleton.com</a>.
+                </p>
+                <p>
+                    You can select one of the template themes using the dropdown
+                    menu to the right.
+                </p>
+
+            </div>
+            <div class="four columns">
+                <form action="return false">
+                    <select onchange="changeTheme(this)">
+                        <option value="crimson-red">Crimson Red</option>
+                        <option value="hacker-purple">Hacker Purple</option>
+                        <option value="skeleton-blue" selected="selected">Skeleton Blue</option>
+                        <option value="soothing-orange">Soothing Orange</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Theme Elements</h4>
+        </div>
+        <div class="row">
+            <p>
+                A Skeleton theme is defined by a set of variables that can be
+                exchanged in order to change theme. These variables are defined
+                in their own themes class which can be applied to a parent
+                element which contains everything you want the theme to affect.
+                This site does this by setting the class of the
+                <code>body</code> element to one of these themes, and exchanging
+                that class when you change theme.
+            </p>
+            <p>
+                A theme is composed of different sets of variables that applies
+                to different things. For a start we can look at the definition
+                of the <i>Skeleton Blue</i> theme, which is the original look.
+            </p>
+            <pre>
+                <code class="code-block">
+/* Classic bone chilling blue */
+
+.skeleton-blue {
+    /* Colors used for primary elements such as primary buttons and links */
+    --primary: #1EAEDB;
+    --primary-focus: #0FA0CE;
+    --primary-background: #33C3F0;
+    --primary-text: #FFF;
+
+    /* The color of non-primary elements such as standard buttons */
+    --muted: #555;
+    --muted-border: #bbb;
+    --muted-focus: #333;
+    --muted-border-focused: #888;
+
+    /* Text color on page for all elements */
+    --text: #222;
+
+    /* Page background color and highlights */
+    --background: #FFF;
+    --background-highlight: #E1E1E1;
+
+    /* Code blocks */
+    --code: #222;
+    --code-background: #F1F1F1;
+    --code-border: #E1E1E1;
+
+    /* Forms */
+    --form-background: #FFF;
+    --form-border: #D1D1D1;
+}
+                </code>
+            </pre>
+            <p>
+                We'll go through the groups one by one.
+            </p>
+            <p>
+                The <code>--primary</code> group defines the primary color of
+                accents on the site. For the Skeleton Blue theme this is the
+                light blue color. These colors applies to primary buttons and
+                links. Note that there also is a definition for the <i>text
+                    color of primary elements</i>, such as the text color of primary
+                buttons.
+            </p>
+            <p>
+                The <code>--muted</code> group defines how normal elements
+                should look, such as normal buttons. This also includes how the
+                elements should look when they are hovered over.
+            </p>
+            <p>
+                The <code>--text</code> definition is for how overall text
+                should look in the theme. This is usually black or white, but
+                can be changed as you please.
+            </p>
+            <p>
+                The <code>--background</code> group defines what color the
+                background should be, and some accents such as horizontal lines.
+            </p>
+
+            We'll carry on with these explanations in their corresponding section.
+        </div>
+        <div class="row">
+            <h4>Buttons</h4>
+        </div>
+        <div class="row">
+            <div class="eight columns">
+                <p>Buttons can take the form of a <i>primary</i> or <i>normal</i>
+                    button. The primary buttons follow the themes colorscheme for
+                    primary elements. The normal buttons follows the themes
+                    colorscheme for muted elements.</p>
+            </div>
+            <div class="four columns">
+                <row>
+                    <button class="button button-primary">Primary button</button>
+                </row>
+                <row>
+                    <button class="button">Normal button</button>
+                </row>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Links</h4>
+            <p>
+                Links also follows the <code>--primary</code> color definitions.
+            </p>
+            <a href=https://github.com/dhg/Skeleton"">
+                Skeleton repository on Github
+            </a>
+        </div>
+        <div class="row">
+            <h4>Forms</h4>
+            <p>
+                Forms work the same as they always have, but now things such as
+                borders and buttons follows the color scheme. The background and
+                border colors of forms are defined in the <code>--form</code> group.
+            </p>
+        </div>
+        <div class="row">
+            <form>
+                <div class="row">
+                    <div class="six columns">
+                        <label for="exampleEmailInput">Your email</label>
+                        <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+                    </div>
+                    <div class="six columns">
+                        <label for="exampleRecipientInput">Reason for contacting</label>
+                        <select class="u-full-width" id="exampleRecipientInput">
+                            <option value="Option 1">Questions</option>
+                            <option value="Option 2">Admiration</option>
+                            <option value="Option 3">Can I get your number?</option>
+                        </select>
+                    </div>
+                </div>
+                <label for="exampleMessage">Message</label>
+                <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
+                <label class="example-send-yourself-copy">
+                    <input type="checkbox">
+                    <span class="label-body">Send a copy to yourself</span>
+                </label>
+                <input class="button-primary" type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <h4>Code</h4>
+                <p>
+                    Code styling is the same as before; just wrap inline code in
+                    a <code>&lt;code&gt;</code> element, and wrap that in a
+                    <code>&lt;pre&gt;</code> element to get a code block.
+                </p>
+                <p>
+                    Code can be stylized by changing the color of the text, the
+                    background color and the border around it. These colors are
+                    defined in the <code>--code</code> group.
+                </p>
+            </div>
+            <div class="six columns">
+                <pre>
+                    <code class="code-block">
+&lt;div class="row"&gt;
+    &lt;h4&gt;Code&lt;/h4&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+    &lt;div class="six columns"&gt;
+        &lt;p&gt;
+            Code styling is the same as before; 
+            just wrap inline code in a 
+            &lt;code&gt;&lt;code&gt;&lt;/code&gt; element, and 
+            wrap that in a 
+            &lt;code&gt;&lt;pre&gt;&lt;/code&gt; element to get 
+            a code block.
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="six columns"&gt;&lt;/div&gt;
+&lt;/div&gt;
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Apply the theme from the selected instance of the form to the whole body
+        function changeTheme(element) {
+            document.body.className = "";
+            document.body.classList.add(element.value)
+        }
+    </script>
+</body>
+
+</html>
